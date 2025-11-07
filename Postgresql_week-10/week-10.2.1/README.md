@@ -1,0 +1,1 @@
+docker exec -it db-db-1 psql -U vikash -d vikashDB
