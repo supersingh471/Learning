@@ -1,1 +1,1 @@
-docker exec -it db-db-1 psql -U vikash -d vikashDB
+docker exec -it db-db-1 psql -U vikash -d week-10

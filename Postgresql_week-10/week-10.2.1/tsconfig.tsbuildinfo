@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.9.2"}
+{"root":["./src/createtable.ts","./src/db.ts","./src/insertdata.ts","./src/joins.ts"],"version":"5.9.2"}
