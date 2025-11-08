@@ -2,19 +2,29 @@
 
 import client from "./db";
 
-async function insertUser(username: string, email: string, password: string) {
+async function insertUser() {
   try {
 	await client.connect();
     const result = await client.query(`
       INSERT INTO users (username, email, password)
       VALUES ($1, $2, $3)
-      RETURNING *
-    `, [username, email, password]);
+	  ON CONFLICT (username) DO NOTHING
+      RETURNING *;
+    `, ["mrsingh", "mrsingh471@gmial.com", "123456"]
+	);
+	console.log("User inserted:", result.rows[0]);
 
-    console.log("User inserted:", result.rows[0]);
+	const addressRes = await client.query(`
+		INSERT INTO addresses (user_id, city, country, street, pincode)
+		VALUES ($1, $2, $3, $4, $5)
+		RETURNING *
+		`, [1, "Delhi", "India", "Sarita Vihar", 110076]
+	);
+
+    console.log("Address inserted:", addressRes.rows[0]);
   } catch (error) {
     console.error("Error inserting user:", error);
   }
 }
 
-insertUser("mrsingh", "mrsingh471@gmial.com", "123456");
+insertUser();
