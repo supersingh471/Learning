@@ -1,7 +1,4 @@
-import React,
-{
-    useState
-} from 'react'
+import { useState } from 'react'
 
 function App() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -62,8 +59,7 @@ function App() {
     }
 
     function renderPaginationControls() {
-        const totalPages =
-            Math.ceil(data.length / itemsPerPage);
+        const totalPages = Math.ceil(data.length / itemsPerPage);
 
         return (
             <div>
